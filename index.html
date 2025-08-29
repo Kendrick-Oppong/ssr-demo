@@ -1,0 +1,1164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Angular SSR - Server-Side Rendering</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Poppins:wght@600;700&family=Fira+Code:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="presentation-container">
+      <!-- Slide 1: Title -->
+      <div class="slide active">
+        <div class="slide-number slide-counter">1/19</div>
+        <div class="slide-content center-content">
+          <div class="angular-logo">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 242 256"
+              aria-label="Angular Logo"
+            >
+              <g clip-path="url(#angular__a)">
+                <mask
+                  id="angular__b"
+                  width="242"
+                  height="256"
+                  x="0"
+                  y="0"
+                  maskUnits="userSpaceOnUse"
+                  style="mask-type: luminance"
+                >
+                  <path fill="#fff" d="M0 0h242v256H0V0Z" />
+                </mask>
+                <g mask="url(#angular__b)">
+                  <path
+                    fill="url(#angular__c)"
+                    d="m241 43-9 136L149 0l92 43Zm-58 176-62 36-63-36 12-31h101l12 31ZM121 68l32 80H88l33-80ZM9 179 0 43 92 0 9 179Z"
+                  />
+                  <path
+                    fill="url(#angular__d)"
+                    d="m241 43-9 136L149 0l92 43Zm-58 176-62 36-63-36 12-31h101l12 31ZM121 68l32 80H88l33-80ZM9 179 0 43 92 0 9 179Z"
+                  />
+                </g>
+              </g>
+              <defs>
+                <linearGradient
+                  id="angular__c"
+                  x1="53.2"
+                  x2="245"
+                  y1="231.9"
+                  y2="140.7"
+                  gradientUnits="userSpaceOnUse"
+                >
+                  <stop stop-color="#E40035" />
+                  <stop offset=".2" stop-color="#F60A48" />
+                  <stop offset=".4" stop-color="#F20755" />
+                  <stop offset=".5" stop-color="#DC087D" />
+                  <stop offset=".7" stop-color="#9717E7" />
+                  <stop offset="1" stop-color="#6C00F5" />
+                </linearGradient>
+                <linearGradient
+                  id="angular__d"
+                  x1="44.5"
+                  x2="170"
+                  y1="30.7"
+                  y2="174"
+                  gradientUnits="userSpaceOnUse"
+                >
+                  <stop stop-color="#FF31D9" />
+                  <stop offset="1" stop-color="#FF5BE1" stop-opacity="0" />
+                </linearGradient>
+                <clipPath id="angular__a">
+                  <path fill="#fff" d="M0 0h242v256H0z" />
+                </clipPath>
+              </defs>
+            </svg>
+          </div>
+          <h1 class="slide-title">Angular SSR</h1>
+          <p class="slide-subtitle">
+            Server-Side Rendering in Modern Angular Applications
+          </p>
+          <div style="margin-top: 40px">
+            <p style="font-size: 1.2rem; color: #4a4a4a">
+              Building High-Performance Web Applications
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 2: Agenda -->
+      <div class="slide">
+        <div class="slide-number slide-counter">2/19</div>
+        <div class="slide-header">
+          <h1 class="slide-title">Agenda</h1>
+          <p class="slide-subtitle">Topics to Be Discussed</p>
+        </div>
+        <div class="slide-content">
+          <div class="content-section">
+            <h3 class="section-title">Presentation Overview</h3>
+            <ul class="bullet-points">
+              <li>Introduction to Server-Side Rendering (SSR)</li>
+              <li>Benefits and Considerations of SSR in Angular</li>
+              <li>Rendering Modes: CSR, SSR, and SSG</li>
+              <li>SSR vs CSR: File Comparison</li>
+              <li>Hybrid Rendering in Angular v19+</li>
+              <li>Angular SSR Architecture and Setup</li>
+              <li>Step-by-Step Setup</li>
+              <li>Hydration: Full and Incremental</li>
+              <li>Event Replay for User Interactions</li>
+              <li>Static Site Generation (SSG)</li>
+              <li>HTTP Transfer State and Caching</li>
+              <li>Server Route Configuration</li>
+              <li>Handling Browser-Specific Code</li>
+              <li>SEO Optimization Strategies</li>
+              <li>Performance Benefits and Core Web Vitals</li>
+              <li>Common Pitfalls and Debugging Techniques</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 3: What is SSR? -->
+      <div class="slide">
+        <div class="slide-number slide-counter">3/19</div>
+        <div class="slide-header">
+          <h1 class="slide-title">What is SSR?</h1>
+        </div>
+        <div class="slide-content">
+          <div class="large-text">
+            <p>
+              <strong>Server-Side Rendering (SSR)</strong> is a web development
+              technique where the server generates HTML content of a web page,
+              providing faster initial load times and improved user experience.
+            </p>
+          </div>
+          <div class="highlight-box">
+            <h3>How it Works</h3>
+            <ul class="bullet-points">
+              <li>Server executes Angular application and generates HTML</li>
+              <li>Full HTML page sent to browser immediately</li>
+              <li>JavaScript takes over for interactivity (hydration)</li>
+              <li>Results in faster perceived load times</li>
+            </ul>
+          </div>
+          <div class="code-block" tabindex="0">
+            <div class="editor-toolbar"></div>
+            <div class="editor-content">
+              <div class="line-numbers">
+                <span>1</span><span>2</span><span>3</span><span>4</span
+                ><span>5</span>
+              </div>
+              <pre><code><span class="keyword">import</span> { <span class="function">bootstrapApplication</span> } <span class="keyword">from</span> <span class="string">'@angular/platform-browser'</span>;
+<span class="keyword">import</span> { <span class="function">provideClientHydration</span> } <span class="keyword">from</span> <span class="string">'@angular/platform-browser'</span>;
+
+<span class="function">bootstrapApplication</span>(AppComponent, {
+  providers: [<span class="function">provideClientHydration</span>()]
+});
+</code></pre>
+            </div>
+          </div>
+          <div class="feature-grid">
+            <div class="feature-card">
+              <div class="feature-title">🚀 Performance</div>
+              <p>
+                Faster initial page loads, especially on slower networks and
+                low-end devices
+              </p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-title">🔍 SEO</div>
+              <p>Better search engine optimization and social media crawling</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 4: Why use SSR in Angular? -->
+      <div class="slide">
+        <div class="slide-number slide-counter">4/19</div>
+        <div class="slide-header">
+          <h1 class="slide-title">Why use SSR in Angular?</h1>
+        </div>
+        <div class="slide-content">
+          <div class="pros-cons">
+            <div class="pros">
+              <h3>✅ Benefits</h3>
+              <ul class="bullet-points">
+                <li>Improved Core Web Vitals (LCP, FID, CLS)</li>
+                <li>Better SEO and social media sharing</li>
+                <li>Faster perceived load times</li>
+                <li>Better performance on slow networks</li>
+                <li>Enhanced accessibility</li>
+                <li>Reduced time to interactive</li>
+              </ul>
+            </div>
+            <div class="cons">
+              <h3>⚠️ Considerations</h3>
+              <ul class="bullet-points">
+                <li>Increased server complexity</li>
+                <li>Higher server hosting costs</li>
+                <li>Browser API limitations</li>
+                <li>Third-party library constraints</li>
+                <li>Development complexity</li>
+              </ul>
+            </div>
+          </div>
+          <div class="highlight-box">
+            <h3>🎯 Perfect for</h3>
+            <p>
+              E-commerce sites, blogs, marketing pages, content-heavy
+              applications, and any app where SEO and initial load performance
+              are critical.
+            </p>
+          </div>
+          <div class="code-block" tabindex="0">
+            <div class="editor-toolbar"></div>
+            <div class="editor-content">
+              <div class="line-numbers">
+                <span>1</span><span>2</span><span>3</span><span>4</span
+                ><span>5</span><span>6</span>
+              </div>
+              <pre><code><span class="keyword">import</span> { <span class="function">provideServerRendering</span> } <span class="keyword">from</span> <span class="string">'@angular/ssr'</span>;
+
+<span class="function">bootstrapApplication</span>(AppComponent, {
+  providers: [
+    <span class="function">provideServerRendering</span>(),
+    <span class="function">provideClientHydration</span>()
+  ]
+});
+</code></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 5: Rendering Modes -->
+      <div class="slide">
+        <div class="slide-number slide-counter">5/19</div>
+        <div class="slide-header">
+          <h1 class="slide-title">Rendering Modes</h1>
+          <p class="slide-subtitle">CSR vs SSR vs SSG (Prerendering)</p>
+        </div>
+        <div class="slide-content">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>Rendering Mode</th>
+                <th>When HTML is Generated</th>
+                <th>Best For</th>
+                <th>Performance</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>CSR (Client-Side)</strong></td>
+                <td>In the browser at runtime</td>
+                <td>SPAs, dashboards, user-specific content</td>
+                <td>Slower initial load</td>
+              </tr>
+              <tr>
+                <td><strong>SSR (Server-Side)</strong></td>
+                <td>On server per request</td>
+                <td>Dynamic content, personalized pages</td>
+                <td>Fast initial load</td>
+              </tr>
+              <tr>
+                <td><strong>SSG (Static Generation)</strong></td>
+                <td>At build time</td>
+                <td>Static content, blogs, marketing pages</td>
+                <td>Fastest load times</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="highlight-box">
+            <h3>💡 Key Insight</h3>
+            <p>
+              Modern applications benefit from
+              <strong>hybrid rendering</strong> - using different modes for
+              different routes based on content requirements.
+            </p>
+          </div>
+          <div class="code-block" tabindex="0">
+            <div class="editor-toolbar"></div>
+            <div class="editor-content">
+              <div class="line-numbers">
+                <span>1</span><span>2</span><span>3</span><span>4</span
+                ><span>5</span><span>6</span>
+              </div>
+              <pre><code><span class="keyword">import</span> { <span class="keyword">RenderMode</span>, <span class="keyword">ServerRoute</span> } <span class="keyword">from</span> <span class="string">'@angular/ssr'</span>;
+
+<span class="keyword">export</span> <span class="keyword">const</span> routes: <span class="keyword">ServerRoute</span>[] = [
+  { path: <span class="string">'dashboard'</span>, renderMode: <span class="keyword">RenderMode</span>.<span class="function">Client</span> },
+  { path: <span class="string">'blog'</span>, renderMode: <span class="keyword">RenderMode</span>.<span class="function">Prerender</span> },
+  { path: <span class="string">'profile'</span>, renderMode: <span class="keyword">RenderMode</span>.<span class="function">Server</span> }
+];
+</code></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 6: SSR vs CSR: File Comparison -->
+      <div class="slide">
+        <div class="slide-number slide-counter">6/19</div>
+        <div class="slide-header">
+          <h1 class="slide-title">SSR vs CSR: File Comparison</h1>
+          <p class="slide-subtitle">Understanding the Differences</p>
+        </div>
+        <div class="slide-content">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>File</th>
+                <th>CSR Application</th>
+                <th>SSR Application</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>main.ts</strong></td>
+                <td>
+                  Bootstraps app in browser using
+                  <code>bootstrapApplication</code> with
+                  <code>app.config.ts</code>.
+                </td>
+                <td>
+                  Same as CSR, but includes hydration providers (e.g.,
+                  <code>provideClientHydration(withEventReplay())</code>).
+                </td>
+              </tr>
+              <tr>
+                <td><strong>app.config.ts</strong></td>
+                <td>
+                  Defines client-side providers (e.g., routing, HTTP client).
+                </td>
+                <td>
+                  Same as CSR, with hydration providers for client-side
+                  interactivity.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>app.routes.ts</strong></td>
+                <td>Defines client-side routes with guards and resolvers.</td>
+                <td>Identical to CSR, used by both client and server.</td>
+              </tr>
+              <tr>
+                <td><strong>main.server.ts</strong></td>
+                <td>Not present.</td>
+                <td>
+                  Bootstraps app on server with
+                  <code>app.config.server.ts</code>.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>app.config.server.ts</strong></td>
+                <td>Not present.</td>
+                <td>
+                  Merges <code>app.config.ts</code> with server providers
+                  (<code>provideServerRendering</code>,
+                  <code>provideServerRouting</code>).
+                </td>
+              </tr>
+              <tr>
+                <td><strong>app.routes.server.ts</strong></td>
+                <td>Not present.</td>
+                <td>
+                  Defines server rendering modes (e.g., <code>Prerender</code>)
+                  and parameters.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>server.ts</strong></td>
+                <td>Not present.</td>
+                <td>
+                  Sets up Express server to render HTML using
+                  <code>AngularNodeAppEngine</code>.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Build Output</strong></td>
+                <td>
+                  Generates <code>dist/browser</code> with <code>main.js</code>,
+                  <code>index.html</code>.
+                </td>
+                <td>
+                  Generates <code>dist/browser</code> and
+                  <code>dist/server</code> with <code>server.js</code> and
+                  prerendered HTML.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="highlight-box">
+            <h3>💡 Key Insight</h3>
+            <p>
+              SSR adds server-specific files to handle HTML rendering,
+              increasing complexity but improving performance and SEO.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 7: Hybrid Rendering -->
+      <div class="slide">
+        <div class="slide-number slide-counter">7/19</div>
+        <div class="slide-header">
+          <h1 class="slide-title">Hybrid Rendering (v19+)</h1>
+          <p class="slide-subtitle">Mix and Match Approaches</p>
+        </div>
+        <div class="slide-content">
+          <div class="large-text">
+            <p>
+              Angular v19 introduces <strong>Hybrid Rendering</strong> -
+              fine-grained control over how different parts of your app are
+              rendered.
+            </p>
+          </div>
+          <div class="code-block" tabindex="0">
+            <div class="editor-toolbar"></div>
+            <div class="editor-content">
+              <div class="line-numbers">
+                <span>1</span><span>2</span><span>3</span><span>4</span
+                ><span>5</span>
+              </div>
+              <pre><code><span class="keyword">export</span> <span class="keyword">const</span> serverRoutes: <span class="keyword">ServerRoute</span>[] = [
+  { path: <span class="string">"home"</span>, renderMode: <span class="keyword">RenderMode</span>.<span class="function">Prerender</span> },     <span class="comment">// Static</span>
+  { path: <span class="string">"products"</span>, renderMode: <span class="keyword">RenderMode</span>.<span class="function">Server</span> },    <span class="comment">// Dynamic</span>
+  { path: <span class="string">"dashboard"</span>, renderMode: <span class="keyword">RenderMode</span>.<span class="function">Client</span> },   <span class="comment">// User-specific</span>
+];
+</code></pre>
+            </div>
+          </div>
+          <div class="feature-grid">
+            <div class="feature-card">
+              <div class="feature-title">🎯 Route-Level Control</div>
+              <p>
+                Choose rendering mode per route based on content requirements
+              </p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-title">⚡ Optimal Performance</div>
+              <p>
+                Static pages load instantly, dynamic content renders on-demand
+              </p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-title">🛠️ Custom Headers</div>
+              <p>Set status codes and headers per route</p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-title">📦 Best of All Worlds</div>
+              <p>Combine SSR, SSG, and CSR in one application</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 8: Angular SSR Overview -->
+      <div class="slide">
+        <div class="slide-number slide-counter">8/19</div>
+        <div class="slide-header">
+          <h1 class="slide-title">Angular SSR Overview</h1>
+          <p class="slide-subtitle">Modern Server-Side Rendering</p>
+        </div>
+        <div class="slide-content">
+          <div class="content-grid">
+            <div class="content-section">
+              <h3 class="section-title">🏗️ Architecture</h3>
+              <ul class="bullet-points">
+                <li>Built on Angular Universal foundation</li>
+                <li>Uses Node.js Express server</li>
+                <li>Supports multiple deployment options</li>
+                <li>Integrated with Angular CLI</li>
+              </ul>
+            </div>
+            <div class="content-section">
+              <h3 class="section-title">📦 Core Components</h3>
+              <ul class="bullet-points">
+                <li>@angular/ssr package</li>
+                <li>Application Builder</li>
+                <li>Server configuration</li>
+                <li>Hydration providers</li>
+              </ul>
+            </div>
+          </div>
+          <div class="code-block" tabindex="0">
+            <div class="editor-toolbar"></div>
+            <div class="editor-content">
+              <div class="line-numbers">
+                <span>1</span><span>2</span><span>3</span><span>4</span
+                ><span>5</span><span>6</span>
+              </div>
+              <pre><code><span class="keyword">import</span> { <span class="function">bootstrapApplication</span> } <span class="keyword">from</span> <span class="string">'@angular/platform-browser'</span>;
+<span class="keyword">import</span> { <span class="function">provideServerRendering</span> } <span class="keyword">from</span> <span class="string">'@angular/ssr'</span>;
+
+<span class="function">bootstrapApplication</span>(AppComponent, {
+  providers: [<span class="function">provideServerRendering</span>()]
+});
+</code></pre>
+            </div>
+          </div>
+          <div class="highlight-box">
+            <h3>🎯 Evolution from Angular Universal</h3>
+            <p>
+              Angular SSR replaces Angular Universal with simplified setup,
+              better performance, and modern tooling. The @angular/ssr package
+              provides everything needed for server-side rendering.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 9: Step-by-Step Setup -->
+      <div class="slide">
+        <div class="slide-number slide-counter">9/19</div>
+        <div class="slide-header">
+          <h1 class="slide-title">Step-by-Step Setup</h1>
+          <p class="slide-subtitle">Modern Application Builder</p>
+        </div>
+        <div class="slide-content">
+          <ol class="step-list">
+            <li>
+              <strong>New Project:</strong>
+              <div class="code-block" tabindex="0">
+                <div class="editor-toolbar"></div>
+                <div class="editor-content">
+                  <div class="line-numbers"><span>1</span></div>
+                  <pre><code>ng new your-app --ssr
+</code></pre>
+                </div>
+              </div>
+            </li>
+            <li>
+              <strong>Existing Project:</strong>
+              <div class="code-block" tabindex="0">
+                <div class="editor-toolbar"></div>
+                <div class="editor-content">
+                  <div class="line-numbers"><span>1</span></div>
+                  <pre><code>ng add @angular/ssr
+</code></pre>
+                </div>
+              </div>
+            </li>
+            <li>
+              <strong>Build & Serve:</strong>
+              <div class="code-block" tabindex="0">
+                <div class="editor-toolbar"></div>
+                <div class="editor-content">
+                  <div class="line-numbers"><span>1</span><span>2</span></div>
+                  <pre><code>ng build        <span class="comment"># Builds both browser & server</span>
+ng serve:ssr    <span class="comment"># Development with SSR</span>
+</code></pre>
+                </div>
+              </div>
+            </li>
+          </ol>
+          <div class="highlight-box">
+            <p>
+              <strong>💡 Pro Tip:</strong> The new Application Builder
+              automatically handles SSR and SSG in one build command!
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 10: Full-Application Hydration -->
+      <div class="slide">
+        <div class="slide-number slide-counter">10/19</div>
+        <div class="slide-header">
+          <h1 class="slide-title">Full-Application Hydration</h1>
+          <p class="slide-subtitle">The Foundation of Modern Angular SSR</p>
+        </div>
+        <div class="slide-content">
+          <div class="large-text">
+            <p>
+              Hydration preserves server-rendered DOM and adds interactivity
+              without destroying and re-creating elements.
+            </p>
+          </div>
+          <div class="content-grid">
+            <div class="content-section">
+              <h3 class="section-title">🔄 Process</h3>
+              <ul class="bullet-points">
+                <li>Server renders static HTML</li>
+                <li>Browser receives complete page</li>
+                <li>Angular reuses existing DOM</li>
+                <li>Event listeners attached</li>
+                <li>App becomes interactive</li>
+              </ul>
+            </div>
+            <div class="content-section">
+              <h3 class="section-title">📈 Benefits</h3>
+              <ul class="bullet-points">
+                <li>No layout shifts or flickering</li>
+                <li>Improved Core Web Vitals</li>
+                <li>Faster time to interactive</li>
+                <li>Better user experience</li>
+                <li>SEO optimization</li>
+              </ul>
+            </div>
+          </div>
+          <div class="code-block" tabindex="0">
+            <div class="editor-toolbar"></div>
+            <div class="editor-content">
+              <div class="line-numbers">
+                <span>1</span><span>2</span><span>3</span>
+              </div>
+              <pre><code>providers: [
+  <span class="function">provideClientHydration</span>()
+]
+</code></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 11: Incremental Hydration -->
+      <div class="slide">
+        <div class="slide-number slide-counter">11/19</div>
+        <div class="slide-header">
+          <h1 class="slide-title">Incremental Hydration (v19+)</h1>
+          <p class="slide-subtitle">Granular Control Over Hydration</p>
+        </div>
+        <div class="slide-content">
+          <div class="highlight-box">
+            <h3>🎯 Purpose</h3>
+            <p>
+              Load smaller initial bundles by hydrating only necessary
+              components, then incrementally hydrate others as needed.
+            </p>
+          </div>
+          <div class="code-block" tabindex="0">
+            <div class="editor-toolbar"></div>
+            <div class="editor-content">
+              <div class="line-numbers">
+                <span>1</span><span>2</span><span>3</span><span>4</span
+                ><span>5</span><span>6</span><span>7</span><span>8</span>
+              </div>
+              <pre><code>providers: [
+  <span class="function">provideClientHydration</span>(<span class="function">withIncrementalHydration</span>())
+]
+
+@<span class="keyword">defer</span> (hydrate on viewport) {
+  <span class="tag">&lt;heavy-component /&gt;</span>
+} @<span class="keyword">placeholder</span> {
+  <span class="tag">&lt;div&gt;</span>Loading...<span class="tag">&lt;/div&gt;</span>
+}
+</code></pre>
+            </div>
+          </div>
+          <div class="feature-grid">
+            <div class="feature-card">
+              <div class="feature-title">hydrate on idle</div>
+              <p>Hydrate when browser is idle</p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-title">hydrate on viewport</div>
+              <p>Hydrate when element enters viewport</p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-title">hydrate on interaction</div>
+              <p>Hydrate on user interaction</p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-title">hydrate never</div>
+              <p>Keep content static (no hydration)</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 12: Event Replay -->
+      <div class="slide">
+        <div class="slide-number slide-counter">12/19</div>
+        <div class="slide-header">
+          <h1 class="slide-title">Event Replay</h1>
+          <p class="slide-subtitle">
+            Capturing User Interactions During Hydration
+          </p>
+        </div>
+        <div class="slide-content">
+          <div class="large-text">
+            <p>
+              Event Replay captures user interactions that occur before
+              hydration completes and replays them afterward, ensuring no user
+              actions are lost.
+            </p>
+          </div>
+          <div class="content-grid">
+            <div class="content-section">
+              <h3 class="section-title">📋 Three Phases</h3>
+              <ul class="bullet-points">
+                <li><strong>Capture:</strong> Store user interactions</li>
+                <li><strong>Queue:</strong> Keep events in memory</li>
+                <li><strong>Replay:</strong> Execute after hydration</li>
+              </ul>
+            </div>
+            <div class="content-section">
+              <h3 class="section-title">🎯 Supported Events</h3>
+              <ul class="bullet-points">
+                <li>Click events</li>
+                <li>Keyboard interactions</li>
+                <li>Mouse events (hover, mouseover)</li>
+                <li>Focus events</li>
+              </ul>
+            </div>
+          </div>
+          <div class="code-block" tabindex="0">
+            <div class="editor-toolbar"></div>
+            <div class="editor-content">
+              <div class="line-numbers">
+                <span>1</span><span>2</span><span>3</span><span>4</span
+                ><span>5</span><span>6</span>
+              </div>
+              <pre><code>providers: [
+  <span class="function">provideClientHydration</span>(<span class="function">withEventReplay</span>())
+]
+
+providers: [
+  <span class="function">provideClientHydration</span>(<span class="function">withIncrementalHydration</span>())
+]
+</code></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 13: Static Site Generation -->
+      <div class="slide">
+        <div class="slide-number slide-counter">13/19</div>
+        <div class="slide-header">
+          <h1 class="slide-title">Static Site Generation (SSG)</h1>
+          <p class="slide-subtitle">Build-Time Prerendering</p>
+        </div>
+        <div class="slide-content">
+          <div class="content-grid">
+            <div class="content-section">
+              <h3 class="section-title">⚡ How SSG Works</h3>
+              <ul class="bullet-points">
+                <li>HTML generated at build time</li>
+                <li>Static files served to users</li>
+                <li>No server processing required</li>
+                <li>Can be deployed to CDN</li>
+              </ul>
+            </div>
+            <div class="content-section">
+              <h3 class="section-title">🎯 Best Use Cases</h3>
+              <ul class="bullet-points">
+                <li>Marketing websites</li>
+                <li>Documentation sites</li>
+                <li>Blogs and articles</li>
+                <li>Product catalogs</li>
+              </ul>
+            </div>
+          </div>
+          <div class="content-section">
+            <h3 class="section-title">🔧 Parameterized Routes</h3>
+            <ul class="bullet-points">
+              <li>
+                Use <code>getPrerenderParams</code> to define dynamic routes
+              </li>
+              <li>Generate multiple static pages for parameterized routes</li>
+              <li>Supports catch-all routes (e.g., <code>/**</code>)</li>
+              <li>Runs at build time, avoids browser/server APIs</li>
+            </ul>
+          </div>
+          <div class="code-block" tabindex="0">
+            <div class="editor-toolbar"></div>
+            <div class="editor-content">
+              <div class="line-numbers">
+                <span>1</span><span>2</span><span>3</span><span>4</span
+                ><span>5</span><span>6</span><span>7</span><span>8</span
+                ><span>9</span><span>10</span><span>11</span><span>12</span>
+              </div>
+              <pre><code><span class="keyword">import</span> { <span class="keyword">RenderMode</span>, <span class="keyword">ServerRoute</span> } <span class="keyword">from</span> <span class="string">'@angular/ssr'</span>;
+<span class="keyword">import</span> { <span class="function">inject</span> } <span class="keyword">from</span> <span class="string">'@angular/core'</span>;
+
+<span class="keyword">export</span> <span class="keyword">const</span> serverRoutes: <span class="keyword">ServerRoute</span>[] = [
+  {
+    path: <span class="string">'post/:id'</span>,
+    renderMode: <span class="keyword">RenderMode</span>.<span class="function">Prerender</span>,
+    async <span class="function">getPrerenderParams</span>() {
+      <span class="keyword">const</span> dataService = <span class="function">inject</span>(PostService);
+      <span class="keyword">const</span> ids = <span class="keyword">await</span> dataService.<span class="function">getIds</span>(); <span class="comment">// ['1', '2', '3']</span>
+      <span class="keyword">return</span> ids.<span class="function">map</span>(id => ({ id })); <span class="comment">// /post/1, /post/2, /post/3</span>
+    }
+  }
+];
+</code></pre>
+            </div>
+          </div>
+          <div class="highlight-box">
+            <h3>🚀 Performance Advantage</h3>
+            <p>
+              SSG provides the fastest possible load times since files are
+              pre-built and can be cached by CDNs worldwide.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 14: HTTP Transfer State & Caching -->
+      <div class="slide">
+        <div class="slide-number slide-counter">14/19</div>
+        <div class="slide-header">
+          <h1 class="slide-title">HTTP Transfer State & Caching</h1>
+          <p class="slide-subtitle">Avoiding Duplicate Network Requests</p>
+        </div>
+        <div class="slide-content">
+          <div class="large-text">
+            <p>
+              Angular automatically caches HTTP requests made during SSR and
+              transfers the data to the browser, preventing duplicate requests
+              during hydration.
+            </p>
+          </div>
+          <div class="content-grid">
+            <div class="content-section">
+              <h3 class="section-title">🔄 Default Behavior</h3>
+              <ul class="bullet-points">
+                <li>Caches GET and HEAD requests</li>
+                <li>Excludes Authorization headers</li>
+                <li>Serializes responses to HTML</li>
+                <li>Reuses cache in browser</li>
+              </ul>
+            </div>
+            <div class="content-section">
+              <h3 class="section-title">⚙️ Configuration</h3>
+              <ul class="bullet-points">
+                <li>Custom cache filtering</li>
+                <li>Include POST requests</li>
+                <li>Include auth headers</li>
+                <li>Custom headers whitelist</li>
+              </ul>
+            </div>
+          </div>
+          <div class="code-block" tabindex="0">
+            <div class="editor-toolbar"></div>
+            <div class="editor-content">
+              <div class="line-numbers">
+                <span>1</span><span>2</span><span>3</span><span>4</span
+                ><span>5</span><span>6</span><span>7</span><span>8</span>
+              </div>
+              <pre><code>providers: [
+  <span class="function">provideClientHydration</span>(
+    <span class="function">withHttpTransferCacheOptions</span>({
+      includePostRequests: <span class="keyword">true</span>,
+      includeRequestsWithAuthHeaders: <span class="keyword">false</span>,
+      filter: (req) => req.method === <span class="string">'GET'</span>
+    })
+  )
+]
+</code></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 15: Server Route Configuration -->
+      <div class="slide">
+        <div class="slide-number slide-counter">15/19</div>
+        <div class="slide-header">
+          <h1 class="slide-title">Server Route Configuration</h1>
+          <p class="slide-subtitle">Advanced Server Features</p>
+        </div>
+        <div class="slide-content">
+          <div class="content-section">
+            <h3 class="section-title">🔄 Fallback Strategies</h3>
+            <ul class="bullet-points">
+              <li><code>Server</code>: Falls back to SSR (default)</li>
+              <li><code>Client</code>: Falls back to CSR</li>
+              <li><code>None</code>: No fallback, returns error</li>
+              <li>Used for non-prerendered SSG routes</li>
+            </ul>
+          </div>
+          <div class="code-block" tabindex="0">
+            <div class="editor-toolbar"></div>
+            <div class="editor-content">
+              <div class="line-numbers">
+                <span>1</span><span>2</span><span>3</span><span>4</span
+                ><span>5</span><span>6</span><span>7</span><span>8</span
+                ><span>9</span><span>10</span><span>11</span>
+              </div>
+              <pre><code><span class="keyword">import</span> { <span class="keyword">RenderMode</span>, <span class="keyword">PrerenderFallback</span>, <span class="keyword">ServerRoute</span> } <span class="keyword">from</span> <span class="string">'@angular/ssr'</span>;
+
+<span class="keyword">export</span> <span class="keyword">const</span> serverRoutes: <span class="keyword">ServerRoute</span>[] = [
+  {
+    path: <span class="string">'post/:id'</span>,
+    renderMode: <span class="keyword">RenderMode</span>.<span class="function">Prerender</span>,
+    fallback: <span class="keyword">PrerenderFallback</span>.<span class="function">Client</span>, <span class="comment">// Fallback to CSR</span>
+    <span class="keyword">async</span> <span class="function">getPrerenderParams</span>() {
+      <span class="keyword">return</span> [{ id: <span class="number">1</span> }, { id: <span class="number">2</span> }, { id: <span class="number">3</span> }]; <span class="comment">// /post/1, /post/2, /post/3</span>
+    }
+  }
+];
+</code></pre>
+            </div>
+          </div>
+          <div class="feature-grid">
+            <div class="feature-card">
+              <div class="feature-title">🔧 Custom Headers</div>
+              <p>Set cache control, security headers, and custom metadata</p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-title">📊 Status Codes</div>
+              <p>Return appropriate HTTP status codes (200, 301, 404, etc.)</p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-title">🔀 Redirects</div>
+              <p>Handle redirects at the server level with proper HTTP codes</p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-title">🌐 Request Context</div>
+              <p>Access request data, user agents, and server context</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 16: Handling Browser-Specific Code -->
+      <div class="slide">
+        <div class="slide-number slide-counter">16/19</div>
+        <div class="slide-header">
+          <h1 class="slide-title">Handling Browser-Specific Code</h1>
+          <p class="slide-subtitle">Platform Detection & Safe API Usage</p>
+        </div>
+        <div class="slide-content">
+          <div class="highlight-box">
+            <h3>⚠️ The Challenge</h3>
+            <p>
+              Browser APIs like <code>window</code>, <code>document</code>,
+              <code>localStorage</code> don't exist on the server.
+            </p>
+          </div>
+          <div class="code-block" tabindex="0">
+            <div class="editor-toolbar"></div>
+            <div class="editor-content">
+              <div class="line-numbers">
+                <span>1</span><span>2</span><span>3</span><span>4</span
+                ><span>5</span><span>6</span><span>7</span><span>8</span
+                ><span>9</span>
+              </div>
+              <pre><code><span class="keyword">import</span> { <span class="function">isPlatformBrowser</span>, <span class="keyword">PLATFORM_ID</span> } <span class="keyword">from</span> <span class="string">'@angular/common'</span>;
+
+<span class="keyword">@Component</span>({...})
+<span class="keyword">export</span> <span class="keyword">class</span> MyComponent {
+  <span class="keyword">private</span> platform = <span class="function">inject</span>(<span class="keyword">PLATFORM_ID</span>);
+  
+  <span class="function">ngOnInit</span>() {
+    <span class="keyword">if</span> (<span class="function">isPlatformBrowser</span>(this.platform)) {
+      console.<span class="function">log</span>(window.location.href);
+    }
+  }
+}
+</code></pre>
+            </div>
+          </div>
+          <div class="code-block" tabindex="0">
+            <div class="editor-toolbar"></div>
+            <div class="editor-content">
+              <div class="line-numbers">
+                <span>1</span><span>2</span><span>3</span><span>4</span
+                ><span>5</span><span>6</span><span>7</span><span>8</span
+                ><span>9</span><span>10</span>
+              </div>
+              <pre><code><span class="keyword">import</span> { <span class="function">afterNextRender</span>, <span class="function">afterRender</span> } <span class="keyword">from</span> <span class="string">'@angular/core'</span>;
+
+<span class="keyword">@Component</span>({...})
+<span class="keyword">export</span> <span class="keyword">class</span> MyComponent {
+  <span class="keyword">constructor</span>() {
+    <span class="function">afterNextRender</span>(() => {
+      console.<span class="function">log</span>(<span class="string">'DOM ready:'</span>, document.readyState);
+    });
+    
+    <span class="function">afterRender</span>(() => {
+    });
+  }
+}
+</code></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 17: SEO Optimization -->
+      <div class="slide">
+        <div class="slide-number slide-counter">17/19</div>
+        <div class="slide-header">
+          <h1 class="slide-title">SEO Optimization</h1>
+          <p class="slide-subtitle">Meta Tags & Search Engine Performance</p>
+        </div>
+        <div class="slide-content">
+          <div class="content-grid">
+            <div class="content-section">
+              <h3 class="section-title">🏷️ Essential Meta Tags</h3>
+              <ul class="bullet-points">
+                <li>Title (60-70 characters)</li>
+                <li>Description (120-150 characters)</li>
+                <li>Open Graph tags</li>
+                <li>Twitter Card tags</li>
+              </ul>
+            </div>
+            <div class="content-section">
+              <h3 class="section-title">🎯 SSR Advantages</h3>
+              <ul class="bullet-points">
+                <li>Search crawlers get full HTML</li>
+                <li>Social media previews work</li>
+                <li>No JavaScript execution required</li>
+                <li>Better indexing performance</li>
+              </ul>
+            </div>
+          </div>
+          <div class="code-block" tabindex="0">
+            <div class="editor-toolbar"></div>
+            <div class="editor-content">
+              <div class="line-numbers">
+                <span>1</span><span>2</span><span>3</span><span>4</span
+                ><span>5</span><span>6</span><span>7</span><span>8</span
+                ><span>9</span>
+              </div>
+              <pre><code><span class="keyword">@Injectable</span>()
+<span class="keyword">export</span> <span class="keyword">class</span> SeoService {
+  <span class="keyword">private</span> title = <span class="function">inject</span>(<span class="keyword">Title</span>);
+  <span class="keyword">private</span> meta = <span class="function">inject</span>(<span class="keyword">Meta</span>);
+
+  <span class="function">updatePageSEO</span>(data: <span class="keyword">SEOData</span>) {
+    this.title.<span class="function">setTitle</span>(data.title);
+    this.meta.<span class="function">updateTag</span>({ name: <span class="string">'description'</span>, content: data.description });
+    this.meta.<span class="function">updateTag</span>({ property: <span class="string">'og:title'</span>, content: data.title });
+    this.meta.<span class="function">updateTag</span>({ property: <span class="string">'og:description'</span>, content: data.description });
+  }
+}
+</code></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 18: Performance Benefits -->
+      <div class="slide">
+        <div class="slide-number slide-counter">18/19</div>
+        <div class="slide-header">
+          <h1 class="slide-title">Performance Benefits</h1>
+          <p class="slide-subtitle">Core Web Vitals & Metrics</p>
+        </div>
+        <div class="slide-content">
+          <div class="feature-grid">
+            <div class="feature-card">
+              <div class="feature-title">📊 LCP (Largest Contentful Paint)</div>
+              <p>Faster content rendering with pre-generated HTML</p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-title">⚡ FID (First Input Delay)</div>
+              <p>Reduced delay with Event Replay and hydration</p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-title">📐 CLS (Cumulative Layout Shift)</div>
+              <p>No layout shifts with proper hydration</p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-title">🕒 TTI (Time to Interactive)</div>
+              <p>Faster interactivity with incremental hydration</p>
+            </div>
+          </div>
+          <div class="highlight-box">
+            <h3>📈 Measurable Improvements</h3>
+            <ul class="bullet-points">
+              <li>
+                <strong>Load Time:</strong> 40-60% faster initial page loads
+              </li>
+              <li>
+                <strong>Bundle Size:</strong> Smaller initial JavaScript with
+                incremental hydration
+              </li>
+              <li><strong>SEO Score:</strong> Perfect Lighthouse SEO scores</li>
+              <li>
+                <strong>User Experience:</strong> Immediate content visibility
+              </li>
+            </ul>
+          </div>
+          <div class="code-block" tabindex="0">
+            <div class="editor-toolbar"></div>
+            <div class="editor-content">
+              <div class="line-numbers">
+                <span>1</span><span>2</span><span>3</span><span>4</span
+                ><span>5</span><span>6</span><span>7</span>
+              </div>
+              <pre><code><span class="keyword">import</span> { <span class="function">provideClientHydration</span>, <span class="function">withEventReplay</span> } <span class="keyword">from</span> <span class="string">'@angular/platform-browser'</span>;
+
+<span class="function">bootstrapApplication</span>(AppComponent, {
+  providers: [
+    <span class="function">provideClientHydration</span>(<span class="function">withEventReplay</span>(), <span class="function">withIncrementalHydration</span>())
+  ]
+});
+</code></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 19: Common Pitfalls & Debugging -->
+      <div class="slide">
+        <div class="slide-number slide-counter">19/19</div>
+        <div class="slide-header">
+          <h1 class="slide-title">Common Pitfalls & Debugging</h1>
+          <p class="slide-subtitle">Avoiding Hydration Errors</p>
+        </div>
+        <div class="slide-content">
+          <div class="content-grid">
+            <div class="content-section">
+              <h3 class="section-title">🚫 Common Issues</h3>
+              <ul class="bullet-points">
+                <li>Direct DOM manipulation</li>
+                <li>Invalid HTML structure</li>
+                <li>Browser API usage on server</li>
+                <li>Inconsistent server/client rendering</li>
+                <li>Third-party script interference</li>
+              </ul>
+            </div>
+            <div class="content-section">
+              <h3 class="section-title">🛠️ Debugging Tools</h3>
+              <ul class="bullet-points">
+                <li>Angular DevTools hydration overlay</li>
+                <li>Console hydration statistics</li>
+                <li>Browser Network tab analysis</li>
+                <li>HTML validation tools</li>
+                <li>Lighthouse performance audits</li>
+              </ul>
+            </div>
+          </div>
+          <div class="code-block" tabindex="0">
+            <div class="editor-toolbar"></div>
+            <div class="editor-content">
+              <div class="line-numbers">
+                <span>1</span><span>2</span><span>3</span><span>4</span
+                ><span>5</span><span>6</span>
+              </div>
+              <pre><code><span class="tag">&lt;problematic-component</span> <span class="attribute">ngSkipHydration</span> <span class="tag">/&gt;</span>
+
+<span class="keyword">@Component</span>({
+  host: { <span class="attribute">ngSkipHydration</span>: <span class="string">'true'</span> }
+})
+<span class="keyword">export</span> <span class="keyword">class</span> ProblematicComponent {}
+</code></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="navigation">
+      <button id="prevBtn" class="nav-btn" onclick="previousSlide()">
+        Previous
+      </button>
+      <button id="nextBtn" class="nav-btn" onclick="nextSlide()">Next</button>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
