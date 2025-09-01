@@ -117,6 +117,11 @@ body {
     font-size: 1.5rem;
 }
 
+/* Agenda item hover styles */
+.slide:nth-child(2) .bullet-points li:hover {
+    text-decoration: underline;
+}
+
 /* Code Block Styles */
 .code-block {
     background: #1a202c;
