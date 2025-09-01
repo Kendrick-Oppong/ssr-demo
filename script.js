@@ -60,11 +60,10 @@ document.addEventListener("DOMContentLoaded", () => {
         8: 10, // Static Site Generation -> Slide 11
         9: 11, // Hybrid Rendering -> Slide 12
         10: 12, // Server Route Configuration -> Slide 13
-        11: 13, // HTTP Transfer State -> Slide 14
-        12: 14, // Handling Browser-Specific Code -> Slide 15
-        13: 15, // SEO Optimization -> Slide 16
-        14: 16, // Performance Benefits -> Slide 17
-        15: 17, // Common Pitfalls -> Slide 18
+        11: 13, // Handling Browser-Specific Code -> Slide 14
+        12: 14, // SEO Optimization -> Slide 15
+        13: 15, // Performance Benefits -> Slide 16
+        14: 16, // Common Pitfalls -> Slide 17
       };
 
       const targetSlide = slideMap[index];
