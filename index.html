@@ -14,7 +14,7 @@
     <div class="presentation-container">
       <!-- Slide 1: Title -->
       <div class="slide active">
-        <div class="slide-number slide-counter">1/19</div>
+        <div class="slide-number slide-counter">1/18</div>
         <div class="slide-content center-content">
           <div class="angular-logo">
             <svg
@@ -93,7 +93,7 @@
 
       <!-- Slide 2: Agenda -->
       <div class="slide">
-        <div class="slide-number slide-counter">2/19</div>
+        <div class="slide-number slide-counter">2/18</div>
         <div class="slide-header">
           <h1 class="slide-title">Agenda</h1>
           <p class="slide-subtitle">Topics to Be Discussed</p>
@@ -105,7 +105,7 @@
               <li>Introduction to Server-Side Rendering (SSR)</li>
               <li>Benefits and Considerations of SSR in Angular</li>
               <li>Rendering Modes: CSR, SSR, and SSG</li>
-              <li>SSR vs CSR: File Comparison</li>
+
               <li>Hybrid Rendering in Angular v19+</li>
               <li>Angular SSR Architecture and Setup</li>
               <li>Step-by-Step Setup</li>
@@ -125,7 +125,7 @@
 
       <!-- Slide 3: What is SSR? -->
       <div class="slide">
-        <div class="slide-number slide-counter">3/19</div>
+        <div class="slide-number slide-counter">3/18</div>
         <div class="slide-header">
           <h1 class="slide-title">What is SSR?</h1>
         </div>
@@ -180,7 +180,7 @@
 
       <!-- Slide 4: Why use SSR in Angular? -->
       <div class="slide">
-        <div class="slide-number slide-counter">4/19</div>
+        <div class="slide-number slide-counter">4/18</div>
         <div class="slide-header">
           <h1 class="slide-title">Why use SSR in Angular?</h1>
         </div>
@@ -239,7 +239,7 @@
 
       <!-- Slide 5: Rendering Modes -->
       <div class="slide">
-        <div class="slide-number slide-counter">5/19</div>
+        <div class="slide-number slide-counter">5/18</div>
         <div class="slide-header">
           <h1 class="slide-title">Rendering Modes</h1>
           <p class="slide-subtitle">CSR vs SSR vs SSG (Prerendering)</p>
@@ -303,110 +303,9 @@
         </div>
       </div>
 
-      <!-- Slide 6: SSR vs CSR: File Comparison -->
+      <!-- Slide 6: Hybrid Rendering -->
       <div class="slide">
-        <div class="slide-number slide-counter">6/19</div>
-        <div class="slide-header">
-          <h1 class="slide-title">SSR vs CSR: File Comparison</h1>
-          <p class="slide-subtitle">Understanding the Differences</p>
-        </div>
-        <div class="slide-content">
-          <table class="comparison-table">
-            <thead>
-              <tr>
-                <th>File</th>
-                <th>CSR Application</th>
-                <th>SSR Application</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>main.ts</strong></td>
-                <td>
-                  Bootstraps app in browser using
-                  <code>bootstrapApplication</code> with
-                  <code>app.config.ts</code>.
-                </td>
-                <td>
-                  Same as CSR, but includes hydration providers (e.g.,
-                  <code>provideClientHydration(withEventReplay())</code>).
-                </td>
-              </tr>
-              <tr>
-                <td><strong>app.config.ts</strong></td>
-                <td>
-                  Defines client-side providers (e.g., routing, HTTP client).
-                </td>
-                <td>
-                  Same as CSR, with hydration providers for client-side
-                  interactivity.
-                </td>
-              </tr>
-              <tr>
-                <td><strong>app.routes.ts</strong></td>
-                <td>Defines client-side routes with guards and resolvers.</td>
-                <td>Identical to CSR, used by both client and server.</td>
-              </tr>
-              <tr>
-                <td><strong>main.server.ts</strong></td>
-                <td>Not present.</td>
-                <td>
-                  Bootstraps app on server with
-                  <code>app.config.server.ts</code>.
-                </td>
-              </tr>
-              <tr>
-                <td><strong>app.config.server.ts</strong></td>
-                <td>Not present.</td>
-                <td>
-                  Merges <code>app.config.ts</code> with server providers
-                  (<code>provideServerRendering</code>,
-                  <code>provideServerRouting</code>).
-                </td>
-              </tr>
-              <tr>
-                <td><strong>app.routes.server.ts</strong></td>
-                <td>Not present.</td>
-                <td>
-                  Defines server rendering modes (e.g., <code>Prerender</code>)
-                  and parameters.
-                </td>
-              </tr>
-              <tr>
-                <td><strong>server.ts</strong></td>
-                <td>Not present.</td>
-                <td>
-                  Sets up Express server to render HTML using
-                  <code>AngularNodeAppEngine</code>.
-                </td>
-              </tr>
-              <tr>
-                <td><strong>Build Output</strong></td>
-                <td>
-                  Generates <code>dist/browser</code> with <code>main.js</code>,
-                  <code>index.html</code>.
-                </td>
-                <td>
-                  Generates <code>dist/browser</code> and
-                  <code>dist/server</code> with <code>server.js</code> and
-                  prerendered HTML.
-                </td>
-              </tr>
-            </tbody>
-          </table>
-          <div class="highlight-box">
-            <h3>💡 Key Insight</h3>
-            <p>
-              SSR adds server-specific files to handle HTML rendering,
-              increasing complexity but improving performance and SEO.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Slide 7: Hybrid Rendering -->
-      <div class="slide">
-        <div class="slide-number slide-counter">7/19</div>
+        <div class="slide-number slide-counter">6/18</div>
         <div class="slide-header">
           <h1 class="slide-title">Hybrid Rendering (v19+)</h1>
           <p class="slide-subtitle">Mix and Match Approaches</p>
@@ -461,7 +360,7 @@
 
       <!-- Slide 8: Angular SSR Overview -->
       <div class="slide">
-        <div class="slide-number slide-counter">8/19</div>
+        <div class="slide-number slide-counter">7/18</div>
         <div class="slide-header">
           <h1 class="slide-title">Angular SSR Overview</h1>
           <p class="slide-subtitle">Modern Server-Side Rendering</p>
@@ -516,7 +415,7 @@
 
       <!-- Slide 9: Step-by-Step Setup -->
       <div class="slide">
-        <div class="slide-number slide-counter">9/19</div>
+        <div class="slide-number slide-counter">8/18</div>
         <div class="slide-header">
           <h1 class="slide-title">Step-by-Step Setup</h1>
           <p class="slide-subtitle">Modern Application Builder</p>
@@ -569,7 +468,7 @@ ng serve:ssr    <span class="comment"># Development with SSR</span>
 
       <!-- Slide 10: Full-Application Hydration -->
       <div class="slide">
-        <div class="slide-number slide-counter">10/19</div>
+        <div class="slide-number slide-counter">9/18</div>
         <div class="slide-header">
           <h1 class="slide-title">Full-Application Hydration</h1>
           <p class="slide-subtitle">The Foundation of Modern Angular SSR</p>
@@ -620,7 +519,7 @@ ng serve:ssr    <span class="comment"># Development with SSR</span>
 
       <!-- Slide 11: Incremental Hydration -->
       <div class="slide">
-        <div class="slide-number slide-counter">11/19</div>
+        <div class="slide-number slide-counter">10/18</div>
         <div class="slide-header">
           <h1 class="slide-title">Incremental Hydration (v19+)</h1>
           <p class="slide-subtitle">Granular Control Over Hydration</p>
@@ -675,7 +574,7 @@ ng serve:ssr    <span class="comment"># Development with SSR</span>
 
       <!-- Slide 12: Event Replay -->
       <div class="slide">
-        <div class="slide-number slide-counter">12/19</div>
+        <div class="slide-number slide-counter">11/18</div>
         <div class="slide-header">
           <h1 class="slide-title">Event Replay</h1>
           <p class="slide-subtitle">
@@ -731,7 +630,7 @@ providers: [
 
       <!-- Slide 13: Static Site Generation -->
       <div class="slide">
-        <div class="slide-number slide-counter">13/19</div>
+        <div class="slide-number slide-counter">12/18</div>
         <div class="slide-header">
           <h1 class="slide-title">Static Site Generation (SSG)</h1>
           <p class="slide-subtitle">Build-Time Prerendering</p>
@@ -805,7 +704,7 @@ providers: [
 
       <!-- Slide 14: HTTP Transfer State & Caching -->
       <div class="slide">
-        <div class="slide-number slide-counter">14/19</div>
+        <div class="slide-number slide-counter">13/18</div>
         <div class="slide-header">
           <h1 class="slide-title">HTTP Transfer State & Caching</h1>
           <p class="slide-subtitle">Avoiding Duplicate Network Requests</p>
@@ -862,7 +761,7 @@ providers: [
 
       <!-- Slide 15: Server Route Configuration -->
       <div class="slide">
-        <div class="slide-number slide-counter">15/19</div>
+        <div class="slide-number slide-counter">14/18</div>
         <div class="slide-header">
           <h1 class="slide-title">Server Route Configuration</h1>
           <p class="slide-subtitle">Advanced Server Features</p>
@@ -923,7 +822,7 @@ providers: [
 
       <!-- Slide 16: Handling Browser-Specific Code -->
       <div class="slide">
-        <div class="slide-number slide-counter">16/19</div>
+        <div class="slide-number slide-counter">15/18</div>
         <div class="slide-header">
           <h1 class="slide-title">Handling Browser-Specific Code</h1>
           <p class="slide-subtitle">Platform Detection & Safe API Usage</p>
@@ -988,7 +887,7 @@ providers: [
 
       <!-- Slide 17: SEO Optimization -->
       <div class="slide">
-        <div class="slide-number slide-counter">17/19</div>
+        <div class="slide-number slide-counter">16/18</div>
         <div class="slide-header">
           <h1 class="slide-title">SEO Optimization</h1>
           <p class="slide-subtitle">Meta Tags & Search Engine Performance</p>
@@ -1042,7 +941,7 @@ providers: [
 
       <!-- Slide 18: Performance Benefits -->
       <div class="slide">
-        <div class="slide-number slide-counter">18/19</div>
+        <div class="slide-number slide-counter">17/18</div>
         <div class="slide-header">
           <h1 class="slide-title">Performance Benefits</h1>
           <p class="slide-subtitle">Core Web Vitals & Metrics</p>
@@ -1104,7 +1003,7 @@ providers: [
 
       <!-- Slide 19: Common Pitfalls & Debugging -->
       <div class="slide">
-        <div class="slide-number slide-counter">19/19</div>
+        <div class="slide-number slide-counter">18/18</div>
         <div class="slide-header">
           <h1 class="slide-title">Common Pitfalls & Debugging</h1>
           <p class="slide-subtitle">Avoiding Hydration Errors</p>

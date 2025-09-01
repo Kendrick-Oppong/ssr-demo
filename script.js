@@ -52,19 +52,18 @@ document.addEventListener("DOMContentLoaded", () => {
         0: 2, // Introduction to SSR -> Slide 3
         1: 3, // Benefits and Considerations -> Slide 4
         2: 4, // Rendering Modes -> Slide 5
-        3: 5, // SSR vs CSR -> Slide 6
-        4: 6, // Hybrid Rendering -> Slide 7
-        5: 7, // Angular SSR Architecture -> Slide 8
-        6: 8, // Step-by-Step Setup -> Slide 9
-        7: 9, // Hydration: Full -> Slide 10
-        8: 10, // Event Replay -> Slide 12
-        9: 12, // Static Site Generation -> Slide 13
-        10: 13, // HTTP Transfer State -> Slide 14
-        11: 14, // Server Route Configuration -> Slide 15
-        12: 15, // Handling Browser-Specific Code -> Slide 16
-        13: 16, // SEO Optimization -> Slide 17
-        14: 17, // Performance Benefits -> Slide 18
-        15: 18, // Common Pitfalls -> Slide 19
+        3: 5, // Hybrid Rendering -> Slide 6
+        4: 6, // Angular SSR Architecture -> Slide 7
+        5: 7, // Step-by-Step Setup -> Slide 8
+        6: 8, // Hydration: Full -> Slide 9
+        7: 9, // Event Replay -> Slide 10
+        8: 10, // Static Site Generation -> Slide 11
+        9: 11, // HTTP Transfer State -> Slide 12
+        10: 12, // Server Route Configuration -> Slide 13
+        11: 13, // Handling Browser-Specific Code -> Slide 14
+        12: 14, // SEO Optimization -> Slide 15
+        13: 15, // Performance Benefits -> Slide 16
+        14: 16, // Common Pitfalls -> Slide 17
       };
 
       const targetSlide = slideMap[index];
