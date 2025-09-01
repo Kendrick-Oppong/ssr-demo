@@ -112,8 +112,8 @@
               <li>Event Replay for User Interactions</li>
               <li>Static Site Generation (SSG)</li>
               <li>Hybrid Rendering in Angular v19+</li>
-              <li>HTTP Transfer State and Caching</li>
               <li>Server Route Configuration</li>
+              <li>HTTP Transfer State and Caching</li>
               <li>Handling Browser-Specific Code</li>
               <li>SEO Optimization Strategies</li>
               <li>Performance Benefits and Core Web Vitals</li>
@@ -701,66 +701,9 @@ providers: [
         </div>
       </div>
 
-      <!-- Slide 13: HTTP Transfer State & Caching -->
+      <!-- Slide 13: Server Route Configuration -->
       <div class="slide">
         <div class="slide-number slide-counter">13/19</div>
-        <div class="slide-header">
-          <h1 class="slide-title">HTTP Transfer State & Caching</h1>
-          <p class="slide-subtitle">Avoiding Duplicate Network Requests</p>
-        </div>
-        <div class="slide-content">
-          <div class="large-text">
-            <p>
-              Angular automatically caches HTTP requests made during SSR and
-              transfers the data to the browser, preventing duplicate requests
-              during hydration.
-            </p>
-          </div>
-          <div class="content-grid">
-            <div class="content-section">
-              <h3 class="section-title">🔄 Default Behavior</h3>
-              <ul class="bullet-points">
-                <li>Caches GET and HEAD requests</li>
-                <li>Excludes Authorization headers</li>
-                <li>Serializes responses to HTML</li>
-                <li>Reuses cache in browser</li>
-              </ul>
-            </div>
-            <div class="content-section">
-              <h3 class="section-title">⚙️ Configuration</h3>
-              <ul class="bullet-points">
-                <li>Custom cache filtering</li>
-                <li>Include POST requests</li>
-                <li>Include auth headers</li>
-                <li>Custom headers whitelist</li>
-              </ul>
-            </div>
-          </div>
-          <div class="code-block" tabindex="0">
-            <div class="editor-toolbar"></div>
-            <div class="editor-content">
-              <div class="line-numbers">
-                <span>1</span><span>2</span><span>3</span><span>4</span
-                ><span>5</span><span>6</span><span>7</span><span>8</span>
-              </div>
-              <pre><code>providers: [
-  <span class="function">provideClientHydration</span>(
-    <span class="function">withHttpTransferCacheOptions</span>({
-      includePostRequests: <span class="keyword">true</span>,
-      includeRequestsWithAuthHeaders: <span class="keyword">false</span>,
-      filter: (req) => req.method === <span class="string">'GET'</span>
-    })
-  )
-]
-</code></pre>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Slide 15: Server Route Configuration -->
-      <div class="slide">
-        <div class="slide-number slide-counter">14/19</div>
         <div class="slide-header">
           <h1 class="slide-title">Server Route Configuration</h1>
           <p class="slide-subtitle">Advanced Server Features</p>
@@ -814,6 +757,63 @@ providers: [
             <div class="feature-card">
               <div class="feature-title">🌐 Request Context</div>
               <p>Access request data, user agents, and server context</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 14: HTTP Transfer State & Caching -->
+      <div class="slide">
+        <div class="slide-number slide-counter">14/19</div>
+        <div class="slide-header">
+          <h1 class="slide-title">HTTP Transfer State & Caching</h1>
+          <p class="slide-subtitle">Avoiding Duplicate Network Requests</p>
+        </div>
+        <div class="slide-content">
+          <div class="large-text">
+            <p>
+              Angular automatically caches HTTP requests made during SSR and
+              transfers the data to the browser, preventing duplicate requests
+              during hydration.
+            </p>
+          </div>
+          <div class="content-grid">
+            <div class="content-section">
+              <h3 class="section-title">🔄 Default Behavior</h3>
+              <ul class="bullet-points">
+                <li>Caches GET and HEAD requests</li>
+                <li>Excludes Authorization headers</li>
+                <li>Serializes responses to HTML</li>
+                <li>Reuses cache in browser</li>
+              </ul>
+            </div>
+            <div class="content-section">
+              <h3 class="section-title">⚙️ Configuration</h3>
+              <ul class="bullet-points">
+                <li>Custom cache filtering</li>
+                <li>Include POST requests</li>
+                <li>Include auth headers</li>
+                <li>Custom headers whitelist</li>
+              </ul>
+            </div>
+          </div>
+          <div class="code-block" tabindex="0">
+            <div class="editor-toolbar"></div>
+            <div class="editor-content">
+              <div class="line-numbers">
+                <span>1</span><span>2</span><span>3</span><span>4</span
+                ><span>5</span><span>6</span><span>7</span><span>8</span>
+              </div>
+              <pre><code>providers: [
+  <span class="function">provideClientHydration</span>(
+    <span class="function">withHttpTransferCacheOptions</span>({
+      includePostRequests: <span class="keyword">true</span>,
+      includeRequestsWithAuthHeaders: <span class="keyword">false</span>,
+      filter: (req) => req.method === <span class="string">'GET'</span>
+    })
+  )
+]
+</code></pre>
             </div>
           </div>
         </div>

@@ -59,8 +59,8 @@ document.addEventListener("DOMContentLoaded", () => {
         7: 9, // Event Replay -> Slide 10
         8: 10, // Static Site Generation -> Slide 11
         9: 11, // Hybrid Rendering -> Slide 12
-        10: 12, // HTTP Transfer State -> Slide 13
-        11: 13, // Server Route Configuration -> Slide 14
+        10: 12, // Server Route Configuration -> Slide 13
+        11: 13, // HTTP Transfer State -> Slide 14
         12: 14, // Handling Browser-Specific Code -> Slide 15
         13: 15, // SEO Optimization -> Slide 16
         14: 16, // Performance Benefits -> Slide 17
