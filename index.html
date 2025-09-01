@@ -14,7 +14,7 @@
     <div class="presentation-container">
       <!-- Slide 1: Title -->
       <div class="slide active">
-        <div class="slide-number slide-counter">1/18</div>
+        <div class="slide-number slide-counter">1/17</div>
         <div class="slide-content center-content">
           <div class="angular-logo">
             <svg
@@ -93,7 +93,7 @@
 
       <!-- Slide 2: Agenda -->
       <div class="slide">
-        <div class="slide-number slide-counter">2/18</div>
+        <div class="slide-number slide-counter">2/17</div>
         <div class="slide-header">
           <h1 class="slide-title">Agenda</h1>
           <p class="slide-subtitle">Topics to Be Discussed</p>
@@ -112,7 +112,7 @@
               <li>Event Replay for User Interactions</li>
               <li>Static Site Generation (SSG)</li>
               <li>Hybrid Rendering in Angular v19+</li>
-              <li>Server Route Configuration</li>
+
               <li>Handling Browser-Specific Code</li>
               <li>SEO Optimization Strategies</li>
               <li>Performance Benefits and Core Web Vitals</li>
@@ -124,7 +124,7 @@
 
       <!-- Slide 3: What is SSR? -->
       <div class="slide">
-        <div class="slide-number slide-counter">3/18</div>
+        <div class="slide-number slide-counter">3/17</div>
         <div class="slide-header">
           <h1 class="slide-title">What is SSR?</h1>
         </div>
@@ -179,7 +179,7 @@
 
       <!-- Slide 4: Why use SSR in Angular? -->
       <div class="slide">
-        <div class="slide-number slide-counter">4/18</div>
+        <div class="slide-number slide-counter">4/17</div>
         <div class="slide-header">
           <h1 class="slide-title">Why use SSR in Angular?</h1>
         </div>
@@ -237,7 +237,7 @@
 
       <!-- Slide 5: Rendering Modes -->
       <div class="slide">
-        <div class="slide-number slide-counter">5/18</div>
+        <div class="slide-number slide-counter">5/17</div>
         <div class="slide-header">
           <h1 class="slide-title">Rendering Modes</h1>
           <p class="slide-subtitle">CSR vs SSR vs SSG (Prerendering)</p>
@@ -303,7 +303,7 @@
 
       <!-- Slide 6: Angular SSR Overview -->
       <div class="slide">
-        <div class="slide-number slide-counter">6/18</div>
+        <div class="slide-number slide-counter">6/17</div>
         <div class="slide-header">
           <h1 class="slide-title">Angular SSR Overview</h1>
           <p class="slide-subtitle">Modern Server-Side Rendering</p>
@@ -358,7 +358,7 @@
 
       <!-- Slide 9: Step-by-Step Setup -->
       <div class="slide">
-        <div class="slide-number slide-counter">7/18</div>
+        <div class="slide-number slide-counter">7/17</div>
         <div class="slide-header">
           <h1 class="slide-title">Step-by-Step Setup</h1>
           <p class="slide-subtitle">Modern Application Builder</p>
@@ -411,7 +411,7 @@ ng serve:ssr    <span class="comment"># Development with SSR</span>
 
       <!-- Slide 10: Full-Application Hydration -->
       <div class="slide">
-        <div class="slide-number slide-counter">8/18</div>
+        <div class="slide-number slide-counter">8/17</div>
         <div class="slide-header">
           <h1 class="slide-title">Full-Application Hydration</h1>
           <p class="slide-subtitle">The Foundation of Modern Angular SSR</p>
@@ -462,7 +462,7 @@ ng serve:ssr    <span class="comment"># Development with SSR</span>
 
       <!-- Slide 11: Incremental Hydration -->
       <div class="slide">
-        <div class="slide-number slide-counter">9/18</div>
+        <div class="slide-number slide-counter">9/17</div>
         <div class="slide-header">
           <h1 class="slide-title">Incremental Hydration (v19+)</h1>
           <p class="slide-subtitle">Granular Control Over Hydration</p>
@@ -517,7 +517,7 @@ ng serve:ssr    <span class="comment"># Development with SSR</span>
 
       <!-- Slide 12: Event Replay -->
       <div class="slide">
-        <div class="slide-number slide-counter">10/18</div>
+        <div class="slide-number slide-counter">10/17</div>
         <div class="slide-header">
           <h1 class="slide-title">Event Replay</h1>
           <p class="slide-subtitle">
@@ -573,7 +573,7 @@ providers: [
 
       <!-- Slide 13: Static Site Generation -->
       <div class="slide">
-        <div class="slide-number slide-counter">11/18</div>
+        <div class="slide-number slide-counter">11/17</div>
         <div class="slide-header">
           <h1 class="slide-title">Static Site Generation (SSG)</h1>
           <p class="slide-subtitle">Build-Time Prerendering</p>
@@ -635,6 +635,14 @@ providers: [
 </code></pre>
             </div>
           </div>
+          <div class="content-section">
+            <h3 class="section-title">🔧 Server Configuration</h3>
+            <ul class="bullet-points">
+              <li>Configure fallback strategies (Server, Client, None)</li>
+              <li>Set custom headers and status codes</li>
+              <li>Handle redirects at server level</li>
+            </ul>
+          </div>
           <div class="highlight-box">
             <h3>🚀 Performance Advantage</h3>
             <p>
@@ -647,7 +655,7 @@ providers: [
 
       <!-- Slide 12: Hybrid Rendering -->
       <div class="slide">
-        <div class="slide-number slide-counter">12/18</div>
+        <div class="slide-number slide-counter">12/17</div>
         <div class="slide-header">
           <h1 class="slide-title">Hybrid Rendering (v19+)</h1>
           <p class="slide-subtitle">Mix and Match Approaches</p>
@@ -700,70 +708,9 @@ providers: [
         </div>
       </div>
 
-      <!-- Slide 13: Server Route Configuration -->
+      <!-- Slide 12: Handling Browser-Specific Code -->
       <div class="slide">
-        <div class="slide-number slide-counter">13/18</div>
-        <div class="slide-header">
-          <h1 class="slide-title">Server Route Configuration</h1>
-          <p class="slide-subtitle">Advanced Server Features</p>
-        </div>
-        <div class="slide-content">
-          <div class="content-section">
-            <h3 class="section-title">🔄 Fallback Strategies</h3>
-            <ul class="bullet-points">
-              <li><code>Server</code>: Falls back to SSR (default)</li>
-              <li><code>Client</code>: Falls back to CSR</li>
-              <li><code>None</code>: No fallback, returns error</li>
-              <li>Used for non-prerendered SSG routes</li>
-            </ul>
-          </div>
-          <div class="code-block" tabindex="0">
-            <div class="editor-toolbar"></div>
-            <div class="editor-content">
-              <div class="line-numbers">
-                <span>1</span><span>2</span><span>3</span><span>4</span
-                ><span>5</span><span>6</span><span>7</span><span>8</span
-                ><span>9</span><span>10</span><span>11</span>
-              </div>
-              <pre><code><span class="keyword">import</span> { <span class="keyword">RenderMode</span>, <span class="keyword">PrerenderFallback</span>, <span class="keyword">ServerRoute</span> } <span class="keyword">from</span> <span class="string">'@angular/ssr'</span>;
-
-<span class="keyword">export</span> <span class="keyword">const</span> serverRoutes: <span class="keyword">ServerRoute</span>[] = [
-  {
-    path: <span class="string">'post/:id'</span>,
-    renderMode: <span class="keyword">RenderMode</span>.<span class="function">Prerender</span>,
-    fallback: <span class="keyword">PrerenderFallback</span>.<span class="function">Client</span>, <span class="comment">// Fallback to CSR</span>
-    <span class="keyword">async</span> <span class="function">getPrerenderParams</span>() {
-      <span class="keyword">return</span> [{ id: <span class="number">1</span> }, { id: <span class="number">2</span> }, { id: <span class="number">3</span> }]; <span class="comment">// /post/1, /post/2, /post/3</span>
-    }
-  }
-];
-</code></pre>
-            </div>
-          </div>
-          <div class="feature-grid">
-            <div class="feature-card">
-              <div class="feature-title">🔧 Custom Headers</div>
-              <p>Set cache control, security headers, and custom metadata</p>
-            </div>
-            <div class="feature-card">
-              <div class="feature-title">📊 Status Codes</div>
-              <p>Return appropriate HTTP status codes (200, 301, 404, etc.)</p>
-            </div>
-            <div class="feature-card">
-              <div class="feature-title">🔀 Redirects</div>
-              <p>Handle redirects at the server level with proper HTTP codes</p>
-            </div>
-            <div class="feature-card">
-              <div class="feature-title">🌐 Request Context</div>
-              <p>Access request data, user agents, and server context</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Slide 14: Handling Browser-Specific Code -->
-      <div class="slide">
-        <div class="slide-number slide-counter">14/18</div>
+        <div class="slide-number slide-counter">13/17</div>
         <div class="slide-header">
           <h1 class="slide-title">Handling Browser-Specific Code</h1>
           <p class="slide-subtitle">Platform Detection & Safe API Usage</p>
@@ -828,7 +775,7 @@ providers: [
 
       <!-- Slide 17: SEO Optimization -->
       <div class="slide">
-        <div class="slide-number slide-counter">15/18</div>
+        <div class="slide-number slide-counter">14/17</div>
         <div class="slide-header">
           <h1 class="slide-title">SEO Optimization</h1>
           <p class="slide-subtitle">Meta Tags & Search Engine Performance</p>
@@ -882,7 +829,7 @@ providers: [
 
       <!-- Slide 18: Performance Benefits -->
       <div class="slide">
-        <div class="slide-number slide-counter">16/18</div>
+        <div class="slide-number slide-counter">15/17</div>
         <div class="slide-header">
           <h1 class="slide-title">Performance Benefits</h1>
           <p class="slide-subtitle">Core Web Vitals & Metrics</p>
@@ -944,7 +891,7 @@ providers: [
 
       <!-- Slide 19: Common Pitfalls & Debugging -->
       <div class="slide">
-        <div class="slide-number slide-counter">17/18</div>
+        <div class="slide-number slide-counter">16/17</div>
         <div class="slide-header">
           <h1 class="slide-title">Common Pitfalls & Debugging</h1>
           <p class="slide-subtitle">Avoiding Hydration Errors</p>
@@ -993,7 +940,7 @@ providers: [
 
       <!-- Slide 19: Q&A -->
       <div class="slide">
-        <div class="slide-number slide-counter">18/18</div>
+        <div class="slide-number slide-counter">17/17</div>
         <div class="slide-content center-content">
           <h1 class="slide-title">Questions & Answers</h1>
           <div>
