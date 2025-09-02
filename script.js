@@ -54,15 +54,14 @@ document.addEventListener("DOMContentLoaded", () => {
         2: 4, // Rendering Modes -> Slide 5
         3: 5, // Angular SSR Architecture -> Slide 6
         4: 6, // Step-by-Step Setup -> Slide 7
-        5: 7, // Full-Application Hydration -> Slide 8
-        6: 8, // Incremental Hydration -> Slide 9
-        7: 9, // Event Replay -> Slide 10
-        8: 10, // Static Site Generation -> Slide 11
-        9: 11, // Hybrid Rendering -> Slide 12
-        10: 12, // Handling Browser-Specific Code -> Slide 13
-        11: 13, // SEO Optimization -> Slide 14
-        12: 14, // Performance Benefits -> Slide 15
-        13: 15, // Common Pitfalls -> Slide 16
+        5: 7, // Incremental Hydration -> Slide 8
+        6: 8, // Event Replay -> Slide 9
+        7: 9, // Static Site Generation -> Slide 10
+        8: 10, // Hybrid Rendering -> Slide 11
+        9: 11, // Handling Browser-Specific Code -> Slide 12
+        10: 12, // SEO Optimization -> Slide 13
+        11: 13, // Performance Benefits -> Slide 14
+        12: 14, // Common Pitfalls -> Slide 15
       };
 
       const targetSlide = slideMap[index];
