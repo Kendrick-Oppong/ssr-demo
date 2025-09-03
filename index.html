@@ -161,7 +161,6 @@
 </code></pre>
             </div>
           </div>
-        
         </div>
       </div>
 
@@ -266,25 +265,8 @@
             <p>
               Modern applications benefit from
               <strong>hybrid rendering</strong> - using different modes for
-              different routes based on content requirements.
+              different routes based on content requirements
             </p>
-          </div>
-          <div class="code-block" tabindex="0">
-            <div class="editor-toolbar"></div>
-            <div class="editor-content">
-              <div class="line-numbers">
-                <span>1</span><span>2</span><span>3</span><span>4</span
-                ><span>5</span><span>6</span>
-              </div>
-              <pre><code><span class="keyword">import</span> { <span class="keyword">RenderMode</span>, <span class="keyword">ServerRoute</span> } <span class="keyword">from</span> <span class="string">'@angular/ssr'</span>;
-
-<span class="keyword">export</span> <span class="keyword">const</span> routes: <span class="keyword">ServerRoute</span>[] = [
-  { path: <span class="string">'dashboard'</span>, renderMode: <span class="keyword">RenderMode</span>.<span class="function">Client</span> },
-  { path: <span class="string">'blog'</span>, renderMode: <span class="keyword">RenderMode</span>.<span class="function">Prerender</span> },
-  { path: <span class="string">'profile'</span>, renderMode: <span class="keyword">RenderMode</span>.<span class="function">Server</span> }
-];
-</code></pre>
-            </div>
           </div>
         </div>
       </div>
